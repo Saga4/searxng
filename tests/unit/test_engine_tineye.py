@@ -12,10 +12,12 @@ from tests import SearxTestCase
 
 class TinEyeTests(SearxTestCase):  # pylint: disable=missing-class-docstring
 
-    def setUp(self):
+    @staticmethod
+    def setUp():
         load_engines([{'name': 'tineye', 'engine': 'tineye', 'shortcut': 'tin', 'timeout': 9.0, 'disabled': True}])
 
-    def tearDown(self):
+    @staticmethod
+    def tearDown():
         load_engines([])
 
     def test_status_code_raises(self):

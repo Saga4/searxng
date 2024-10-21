@@ -195,7 +195,8 @@ class PluginStore:
     def register(self, plugin):
         self.plugins.append(plugin)
 
-    def call(self, ordered_plugin_list, plugin_type, *args, **kwargs):
+    @staticmethod
+    def call(ordered_plugin_list, plugin_type, *args, **kwargs):
         ret = True
         for plugin in ordered_plugin_list:
             if hasattr(plugin, plugin_type):

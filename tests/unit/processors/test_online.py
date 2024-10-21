@@ -21,10 +21,12 @@ TEST_ENGINE = {
 
 class TestOnlineProcessor(SearxTestCase):  # pylint: disable=missing-class-docstring
 
-    def setUp(self):
+    @staticmethod
+    def setUp():
         load_engines([TEST_ENGINE])
 
-    def tearDown(self):
+    @staticmethod
+    def tearDown():
         load_engines([])
 
     def _get_params(self, online_processor, search_query, engine_category):

@@ -506,10 +506,12 @@ class WDAttribute:
     def get_where(self):
         return "OPTIONAL { ?item wdt:{name} ?{name} . }".replace('{name}', self.name)
 
-    def get_wikibase_label(self):
+    @staticmethod
+    def get_wikibase_label():
         return ""
 
-    def get_group_by(self):
+    @staticmethod
+    def get_group_by():
         return ""
 
     def get_str(self, result, language):  # pylint: disable=unused-argument
@@ -673,11 +675,13 @@ class WDDateAttribute(WDAttribute):
     def get_group_by(self):
         return self.get_select()
 
-    def format_8(self, value, locale):  # pylint: disable=unused-argument
+    @staticmethod
+    def format_8(value, locale):  # pylint: disable=unused-argument
         # precision: less than a year
         return value
 
-    def format_9(self, value, locale):
+    @staticmethod
+    def format_9(value, locale):
         year = int(value)
         # precision: year
         if year < 1584:
@@ -687,17 +691,20 @@ class WDDateAttribute(WDAttribute):
         timestamp = isoparse(value)
         return format_date(timestamp, format='yyyy', locale=locale)
 
-    def format_10(self, value, locale):
+    @staticmethod
+    def format_10(value, locale):
         # precision: month
         timestamp = isoparse(value)
         return format_date(timestamp, format='MMMM y', locale=locale)
 
-    def format_11(self, value, locale):
+    @staticmethod
+    def format_11(value, locale):
         # precision: day
         timestamp = isoparse(value)
         return format_date(timestamp, format='full', locale=locale)
 
-    def format_13(self, value, locale):
+    @staticmethod
+    def format_13(value, locale):
         timestamp = isoparse(value)
         # precision: minute
         return (
@@ -707,7 +714,8 @@ class WDDateAttribute(WDAttribute):
             .replace('{1}', format_date(timestamp, 'short', locale=locale))
         )
 
-    def format_14(self, value, locale):
+    @staticmethod
+    def format_14(value, locale):
         # precision: second.
         return format_datetime(isoparse(value), format='full', locale=locale)
 
