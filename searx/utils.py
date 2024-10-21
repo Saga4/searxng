@@ -130,7 +130,8 @@ class _HTMLTextExtractor(HTMLParser):
     def get_text(self):
         return ''.join(self.result).strip()
 
-    def error(self, message):
+    @staticmethod
+    def error(message):
         # error handle is needed in <py3.10
         # https://github.com/python/cpython/pull/8562/files
         raise AssertionError(message)

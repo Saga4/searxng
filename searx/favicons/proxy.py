@@ -90,7 +90,8 @@ class FaviconProxyConfig(BaseModel):
             self.favicon_mime_type,
         )
 
-    def favicon_data_url(self, **replacements):
+    @staticmethod
+    def favicon_data_url(**replacements):
         """Returns data image URL of the default favicon."""
 
         cache_key = ", ".join(f"{x}:{replacements[x]}" for x in sorted(list(replacements.keys()), key=str))

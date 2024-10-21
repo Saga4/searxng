@@ -91,7 +91,8 @@ class InfoPage:
             MarkdownIt("commonmark", {"typographer": True}).enable(["replacements", "smartquotes"]).render(self.content)
         )
 
-    def get_ctx(self):
+    @staticmethod
+    def get_ctx():
         """Jinja context to render :py:obj:`InfoPage.content`"""
 
         def _md_link(name, url):

@@ -7,7 +7,8 @@ from tests import SearxTestCase
 
 
 class MariadbServerTests(SearxTestCase):  # pylint: disable=missing-class-docstring
-    def setUp(self):
+    @staticmethod
+    def setUp():
         load_engines(
             [
                 {
@@ -20,7 +21,8 @@ class MariadbServerTests(SearxTestCase):  # pylint: disable=missing-class-docstr
             ]
         )
 
-    def tearDown(self):
+    @staticmethod
+    def tearDown():
         load_engines([])
 
     def test_init_no_query_str_raises(self):

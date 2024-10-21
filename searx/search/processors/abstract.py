@@ -190,5 +190,6 @@ class EngineProcessor(ABC):
             tests.update(self.get_default_tests())
         return tests
 
-    def get_default_tests(self):
+    @staticmethod
+    def get_default_tests():
         return {}

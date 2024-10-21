@@ -217,10 +217,12 @@ class TestBang(SearxTestCase):  # pylint:disable=missing-class-docstring
     SPECIFIC_BANGS = ['!dummy_engine', '!du', '!general']
     THE_QUERY = 'the query'
 
-    def setUp(self):
+    @staticmethod
+    def setUp():
         load_engines(TEST_ENGINES)
 
-    def tearDown(self):
+    @staticmethod
+    def tearDown():
         load_engines([])
 
     @parameterized.expand(SPECIFIC_BANGS)

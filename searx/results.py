@@ -260,7 +260,8 @@ class ResultContainer:
         if add_infobox:
             self.infoboxes.append(infobox)
 
-    def _is_valid_url_result(self, result, error_msgs):
+    @staticmethod
+    def _is_valid_url_result(result, error_msgs):
         if 'url' in result:
             if not isinstance(result['url'], str):
                 logger.debug('result: invalid URL: %s', str(result))
@@ -280,7 +281,8 @@ class ResultContainer:
 
         return True
 
-    def _normalize_url_result(self, result):
+    @staticmethod
+    def _normalize_url_result(result):
         """Return True if the result is valid"""
         result['parsed_url'] = urlparse(result['url'])
 
@@ -331,7 +333,8 @@ class ResultContainer:
                     return merged_result
         return None
 
-    def __merge_duplicated_http_result(self, duplicated, result, position):
+    @staticmethod
+    def __merge_duplicated_http_result(duplicated, result, position):
         # using content with more text
         if result_content_len(result.get('content', '')) > result_content_len(duplicated.get('content', '')):
             duplicated['content'] = result['content']

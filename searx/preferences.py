@@ -213,7 +213,8 @@ class MapSetting(Setting):
 class BooleanSetting(Setting):
     """Setting of a boolean value that has to be translated in order to be storable"""
 
-    def normalized_str(self, val):
+    @staticmethod
+    def normalized_str(val):
         for v_str, v_obj in MAP_STR2BOOL.items():
             if val == v_obj:
                 return v_str
@@ -239,10 +240,12 @@ class BooleanChoices:
         self.locked = locked
         self.default_choices = dict(choices)
 
-    def transform_form_items(self, items):
+    @staticmethod
+    def transform_form_items(items):
         return items
 
-    def transform_values(self, values):
+    @staticmethod
+    def transform_values(values):
         return values
 
     def parse_cookie(self, data_disabled: str, data_enabled: str):

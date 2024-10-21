@@ -128,7 +128,8 @@ class SQLiteAppl(abc.ABC):
         self.register_functions(conn)
         return conn
 
-    def register_functions(self, conn):
+    @staticmethod
+    def register_functions(conn):
         """Create user-defined_ SQL functions.
 
         ``REGEXP(<pattern>, <field>)`` : 0 | 1

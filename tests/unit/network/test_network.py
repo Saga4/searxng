@@ -10,7 +10,8 @@ from tests import SearxTestCase
 
 
 class TestNetwork(SearxTestCase):  # pylint: disable=missing-class-docstring
-    def setUp(self):
+    @staticmethod
+    def setUp():
         initialize()
 
     def test_simple(self):
@@ -107,7 +108,8 @@ class TestNetwork(SearxTestCase):  # pylint: disable=missing-class-docstring
 
         await network.aclose()
 
-    async def test_aclose(self):
+    @staticmethod
+    async def test_aclose():
         network = Network(verify=True)
         await network.get_client()
         await network.aclose()
